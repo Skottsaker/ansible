@@ -28,9 +28,9 @@
         state: present
     
     - name: Copy python-script and jinja file to webservers
-       copy:
+      copy:
         src: /home/ubuntu/ansible
         dest: /home/ubuntu/
     
     - name: Run mixologyfy
-       shell: cd /home/ubuntu/ansible && python3 /home/ubuntu/ansible/mixologyfy.py
+      shell: cd /home/ubuntu/ansible && python3 /home/ubuntu/ansible/mixologyfy.py
