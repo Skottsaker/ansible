@@ -9,20 +9,23 @@
         update_cache: yes
     
     - name: Install Python3 and Pip
+      become: true
       apt:
         name:
           - python3
           - python3-pip
           - figlet
+          - bash
         state: present
     
     - name: Install Flask, psycopg and requests
+      become: true
       pip:
         name: 
           - flask==3.0.0
           - psycopg==3.1.16
           - psycopg-binary==3.1.16
-          - psycopg-pool==3.1.16
+          - psycopg-pool
           - requests==2.29.0
         executable: pip3
         state: present
@@ -31,6 +34,12 @@
       copy:
         src: /home/ubuntu/ansible
         dest: /home/ubuntu/
-    
+      
     - name: Run mixologyfy
-      shell: cd /home/ubuntu/ansible && python3 /home/ubuntu/ansible/mixologyfy.py
+      shell: |
+        python3 /home/ubuntu/ansible/mixologyfy.py
+      environment:
+        APP_TEMPLATE_PATH: /home/ubuntu/ansible/index.html.jinja
+      args:
+        executable: /bin/bash
+    
