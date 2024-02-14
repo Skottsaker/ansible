@@ -7,7 +7,7 @@
        apt:
          update_cache: yes
     
-    - name: Install Python3 and Pip
+     - name: Install Python3 and Pip
       apt:
         name:
           - python3
