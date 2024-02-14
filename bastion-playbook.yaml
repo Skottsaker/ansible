@@ -32,4 +32,4 @@
         dest: /home/ubuntu/
     
     - name: Run mixologyfy
-      command: python3 /home/ubuntu/ansible/mixologyfy.py
+      shell: cd /home/ubuntu/ansible && python3 /home/ubuntu/ansible/mixologyfy.py
